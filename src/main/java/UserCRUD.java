@@ -101,11 +101,16 @@ public class UserCRUD {
         return tempUser;
     }
 
-    public static User getUserById(String id ){
-
-
-
-        return new User();
+    public static User getUserById(String id ) throws Exception {
+        List<User> newUsers = setUsersJsonToList();
+        for (int i = 0; i<newUsers.size();i++){
+            if(newUsers.get(i).getId().equals(id)){
+                return newUsers.get(i);
+            }
+        }
+        throw new Exception("User not found");
     }
+
+
 
 }

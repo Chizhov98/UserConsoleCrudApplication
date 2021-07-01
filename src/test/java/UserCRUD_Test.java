@@ -59,5 +59,10 @@ public class UserCRUD_Test {
         }
     }
 
+    @Test
+    public void getUserById_nominal() throws Exception {
+        Assert.assertEquals(users.get(1),UserCRUD.getUserById("John-Smith-NewYork-1976"));
+    }
+
 
 }
