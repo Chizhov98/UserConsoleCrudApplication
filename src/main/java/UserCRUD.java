@@ -101,16 +101,27 @@ public class UserCRUD {
         return tempUser;
     }
 
-    public static User getUserById(String id ) throws Exception {
+    public static User getUserById(String id) throws Exception {
         List<User> newUsers = setUsersJsonToList();
-        for (int i = 0; i<newUsers.size();i++){
-            if(newUsers.get(i).getId().equals(id)){
+        for (int i = 0; i < newUsers.size(); i++) {
+            if (newUsers.get(i).getId().equals(id)) {
                 return newUsers.get(i);
             }
         }
         throw new Exception("User not found");
     }
 
+    public static List<User> deleteUserById(String id) throws Exception {
+        List<User> newUsers = setUsersJsonToList();
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < newUsers.size(); i++) {
+            if (!newUsers.get(i).getId().equals(id)) {
+                users.add(newUsers.get(i));
+            }
+        }
+        createJson(users);
+        return users;
+    }
 
 
 }

@@ -64,5 +64,12 @@ public class UserCRUD_Test {
         Assert.assertEquals(users.get(1),UserCRUD.getUserById("John-Smith-NewYork-1976"));
     }
 
+    @Test
+    public void deleteUserById_nominal() throws Exception {
+        List<User> newUsers= UserCRUD.deleteUserById("Artem-Chizhov-Kharkov-1998");
+        Assert.assertEquals(1,newUsers.size());
+        Assert.assertEquals(users.get(1),newUsers.get(0));
+    }
+
 
 }

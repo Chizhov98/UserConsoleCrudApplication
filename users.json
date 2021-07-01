@@ -1,13 +1,6 @@
 {
    "User" : [
   {
-       "id":"Artem-Chizhov-Kharkov-1998",
-       "firstName" : "Artem",
-       "lastName" : "Chizhov",
-       "fullName" : "Artem Chizhov",
-       "email" : "someArtem`sMail@gmail.com"
-   },
-  {
        "id":"John-Smith-NewYork-1976",
        "firstName" : "John",
        "lastName" : "Smith",
