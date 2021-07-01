@@ -32,18 +32,18 @@ public class UserCRUD {
         createFile(USERS_JSON);
         AtomicInteger count = new AtomicInteger();
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(USERS_JSON, true))) {
-            bufferedWriter.write("[\n");
+            bufferedWriter.write("{\n" +
+                    "   \"User\" : [\n" );
             users.stream().forEach(e -> {
                 count.getAndIncrement();
                 try {
                     bufferedWriter.write("  {\n" +
-                            "   \"User\" : {\n" +
-                            "   \"id:\":\"" + e.getId() + "\",\n" +
-                            "   \"firstName\" : \"" + e.getFirstName() + " \",\n" +
-                            "   \"lastName\" : \"" + e.getLastName() + " \",\n" +
-                            "   \"fullName\" :  \"" + e.getFullName() + " \",\n" +
-                            "   \"email\" :\" " + e.getEmail() + "\"\n  }\n" +
-                            "}"
+                            "       \"id:\":\"" + e.getId() + "\",\n" +
+                            "       \"firstName\" : \"" + e.getFirstName() + " \",\n" +
+                            "       \"lastName\" : \"" + e.getLastName() + " \",\n" +
+                            "       \"fullName\" :  \"" + e.getFullName() + " \",\n" +
+                            "       \"email\" :\" " + e.getEmail() + "\"\n" +
+                            "   }"
                     );
                     if(count.get() <users.size()){
                         bufferedWriter.write(",\n");
@@ -54,7 +54,7 @@ public class UserCRUD {
                     ioException.printStackTrace();
                 }
             });
-            bufferedWriter.write("]");
+            bufferedWriter.write("  ]\n}");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,21 +78,21 @@ public class UserCRUD {
     public static List<User> setUsersJsonToList() throws IOException {
 
 
-        BufferedReader reader = new BufferedReader(new FileReader(USERS_JSON));
-        String position;
-        StringBuilder stringBuilder = new StringBuilder();
-        while ((position = reader.readLine()) != null) {
-            System.out.println("position = " + position);
-            stringBuilder.append(position);
-        }
-        System.out.println("stringBuilder = " + stringBuilder);
-
-        JsonElement jsonElement = new Gson().fromJson(stringBuilder.toString(), JsonObject.class);
+//        BufferedReader reader = new BufferedReader(new FileReader(USERS_JSON));
+//        String position;
+//        StringBuilder stringBuilder = new StringBuilder();
+//        while ((position = reader.readLine()) != null) {
+//            System.out.println("position = " + position);
+//            stringBuilder.append(position);
+//        }
+//        System.out.println("stringBuilder = " + stringBuilder);
+//
+//        JsonElement jsonElement = new Gson().fromJson(stringBuilder.toString(), JsonObject.class);
 
 
 
         List<User> list = new ArrayList<>();
-       // JsonElement jsonElement = new Gson().fromJson(readUsersJson(), JsonObject.class);
+        JsonElement jsonElement = new Gson().fromJson(readUsersJson(), JsonObject.class);
         System.out.println(jsonElement);
             JsonArray asJsonArray =  jsonElement.getAsJsonArray();
 

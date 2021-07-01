@@ -35,26 +35,19 @@ public class UserCRUD_Test {
     @Test
     public void createJson_nominal() {
         UserCRUD.createJson(users);
-        Assert.assertEquals("[\n" +
-                "  {\n" +
-                "   \"User\" : {\n" +
-                "   \"id:\":\"Artem-Chizhov-Kharkov-1998\",\n" +
-                "   \"firstName\" : \"Artem \",\n" +
-                "   \"lastName\" : \"Chizhov \",\n" +
-                "   \"fullName\" :  \"Artem Chizhov \",\n" +
-                "   \"email\" :\" someArtem`sMail@gmail.com\"\n" +
-                "  }\n" +
-                "},\n" +
-                "  {\n" +
-                "   \"User\" : {\n" +
-                "   \"id:\":\"John-Smith-NewYork-1976\",\n" +
-                "   \"firstName\" : \"John \",\n" +
-                "   \"lastName\" : \"Smith \",\n" +
-                "   \"fullName\" :  \"John Smith \",\n" +
-                "   \"email\" :\" someJohn`sMail@gmail.com\"\n" +
-                "  }\n" +
-                "}\n" +
-                "]",UserCRUD.readUsersJson());
+        Assert.assertEquals("{   \"User\" : [  {" +
+                "       \"id:\":\"Artem-Chizhov-Kharkov-1998\"," +
+                "       \"firstName\" : \"Artem \"," +
+                "       \"lastName\" : \"Chizhov \"," +
+                "       \"fullName\" :  \"Artem Chizhov \"," +
+                "       \"email\" :\" someArtem`sMail@gmail.com\"   }," +
+                "  {       \"id:\":\"John-Smith-NewYork-1976\"," +
+                "       \"firstName\" : \"John \"," +
+                "       \"lastName\" : \"Smith \"," +
+                "       \"fullName\" :  \"John Smith \"," +
+                "       \"email\" :\" someJohn`sMail@gmail.com\"" +
+                "   }" +
+                "  ]}",UserCRUD.readUsersJson());
     }
 
 @Test
