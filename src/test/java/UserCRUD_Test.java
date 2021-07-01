@@ -36,28 +36,28 @@ public class UserCRUD_Test {
     public void createJson_nominal() {
         UserCRUD.createJson(users);
         Assert.assertEquals("{   \"User\" : [  {" +
-                "       \"id:\":\"Artem-Chizhov-Kharkov-1998\"," +
-                "       \"firstName\" : \"Artem \"," +
-                "       \"lastName\" : \"Chizhov \"," +
-                "       \"fullName\" :  \"Artem Chizhov \"," +
-                "       \"email\" :\" someArtem`sMail@gmail.com\"   }," +
-                "  {       \"id:\":\"John-Smith-NewYork-1976\"," +
-                "       \"firstName\" : \"John \"," +
-                "       \"lastName\" : \"Smith \"," +
-                "       \"fullName\" :  \"John Smith \"," +
-                "       \"email\" :\" someJohn`sMail@gmail.com\"" +
-                "   }" +
-                "  ]}",UserCRUD.readUsersJson());
+                "       \"id\":\"Artem-Chizhov-Kharkov-1998\"," +
+                "       \"firstName\" : \"Artem\"," +
+                "       \"lastName\" : \"Chizhov\"," +
+                "       \"fullName\" : \"Artem Chizhov\"," +
+                "       \"email\" : \"someArtem`sMail@gmail.com\"   }," +
+                "  {       \"id\":\"John-Smith-NewYork-1976\"," +
+                "       \"firstName\" : \"John\"," +
+                "       \"lastName\" : \"Smith\"," +
+                "       \"fullName\" : \"John Smith\"," +
+                "       \"email\" : \"someJohn`sMail@gmail.com\"" +
+                "   }  ]}"
+                , UserCRUD.readUsersJson());
     }
 
-@Test
+    @Test
     public void getListOfUnitsFromJson_nominal() throws IOException {
-       Assert.assertEquals(UserCRUD.setUsersJsonToList(),users);
-
-}
-
-
-
+        ArrayList<User> newUsers = (ArrayList<User>) UserCRUD.setUsersJsonToList();
+        Assert.assertEquals(newUsers.size(),users.size());
+        for (int i =0;i<users.size();i++){
+            Assert.assertEquals(UserCRUD.setUsersJsonToList().get(i), users.get(i));
+        }
+    }
 
 
 }
